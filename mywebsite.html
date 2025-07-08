@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kim Yzabelle - Remote Support Specialist</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            border: 5px solid #667eea;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            font-weight: bold;
+            color: #667eea;
+            position: relative;
+            z-index: 1;
+        }
+
+        .name {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .title {
+            font-size: 1.3rem;
+            color: #667eea;
+            margin-bottom: 15px;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+
+        .rate {
+            font-size: 1.8rem;
+            color: #27ae60;
+            font-weight: bold;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #555;
+            font-size: 1rem;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-title::before {
+            content: '';
+            width: 4px;
+            height: 30px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .objective {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-item {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: scale(1.05);
+        }
+
+        .experience-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .job-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .company {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .date {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .service-item {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s ease;
+        }
+
+        .service-item:hover {
+            transform: translateX(5px);
+        }
+
+        .service-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .cta-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .education-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .degree {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .school {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .name {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="profile-img">KY</div>
+            <h1 class="name">Kim Yzabelle</h1>
+            <p class="title">Remote Support Specialist | Admin & Virtual Assistance</p>
+            <div class="rate">$5.00/hr</div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧</span>
+                    <span>Ramalkim190@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <span>📱</span>
+                    <span>+63 916 398 3245</span>
+                </div>
+                <div class="contact-item">
+                    <span>📍</span>
+                    <span>Manila, Philippines</span>
+                </div>
+                <div class="contact-item">
+                    <span>💼</span>
+                    <span>GitHub: kraamm6</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="card">
+                <h2 class="card-title">Professional Summary</h2>
+                <p class="objective">
+                    I am a Remote Support Specialist with a solid background in IT, administrative support, and virtual assistance. I possess hands-on experience in technical troubleshooting, data entry, documentation, and customer service, allowing me to provide well-rounded and efficient remote support to clients. I am highly organized, detail-oriented, and quick to adapt to new tools and systems.
+                </p>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title">Core Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">Computer Literate</div>
+                    <div class="skill-item">Technical Support</div>
+                    <div class="skill-item">Data Entry</div>
+                    <div class="skill-item">Customer Service</div>
+                    <div class="skill-item">Administrative Tasks</div>
+                    <div class="skill-item">HTML, CSS, Basic Java</div>
+                    <div class="skill-item">SQL Database</div>
+                    <div class="skill-item">Email Management</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="card">
+                <h2 class="card-title">Work Experience</h2>
+                <div class="experience-item">
+                    <div class="job-title">SOFTWARE ENGINEER ASSOCIATE</div>
+                    <div class="company">Accenture (Bonifacio Global City, Manila)</div>
+                    <div class="description">
+                        Developed and maintained scalable applications using modern technologies and Agile methodologies. Collaborated with cross-functional teams to deliver high-quality applications aligned with client needs.
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-title">ADMIN ASSISTANT</div>
+                    <div class="company">Lyceum of the Philippines University</div>
+                    <div class="description">
+                        Handled administrative tasks including correspondence, document preparation, and record-keeping. Provided excellent customer service and contributed to quality improvement initiatives.
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-title">IT HELP DESK SUPPORT - INTERNSHIP</div>
+                    <div class="company">Batangas Medical Center</div>
+                    <div class="description">
+                        Provided technical support, diagnosed and resolved hardware/software issues, and maintained computer systems and networks.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title">Services Offered</h2>
+                <div class="services-grid">
+                    <div class="service-item">
+                        <div class="service-title">📅 Calendar Management</div>
+                        <div>Scheduling appointments and managing your calendar efficiently</div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-title">📧 Email Management</div>
+                        <div>Professional email handling and correspondence</div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-title">💾 Data Entry</div>
+                        <div>Accurate and efficient data processing and entry</div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-title">📱 Social Media Management</div>
+                        <div>Managing Facebook, Instagram, X, and LinkedIn accounts</div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-title">🔧 Technical Support</div>
+                        <div>IT troubleshooting and technical assistance</div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-title">🎨 Graphic Design Support</div>
+                        <div>Canva design and visual content creation</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="card">
+                <h2 class="card-title">Education</h2>
+                <div class="education-item">
+                    <div class="degree">Bachelor of Science in Information Technology</div>
+                    <div class="school">Batangas State University</div>
+                    <div class="date">Major in Network Technology</div>
+                </div>
+                <div class="education-item">
+                    <div class="degree">Junior and Senior High School</div>
+                    <div class="school">University of Batangas</div>
+
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title">Certifications</h2>
+                <div class="experience-item">
+                    <div class="job-title">Professional Certifications</div>
+                    <div class="description">
+                        • Cum Laude Graduate<br>
+                        • Cisco Cybersecurity Essentials<br>
+                        • CCNA: Introduction to Networks, Routing and Switching<br>
+                        • AWS Academy Cloud Architecting<br>
+                        • AWS Academy Cloud Foundations
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2 style="margin-bottom: 20px; color: #2c3e50;">Ready to Work Together?</h2>
+            <p style="margin-bottom: 30px; color: #555; font-size: 1.1rem;">
+                With a strong IT background, I am dedicated to delivering reliable and smart support, consistently producing quality results on time with minimal supervision.
+            </p>
+            <a href="mailto:Ramalkim23@gmail.com" class="cta-button">📧 Send Message</a>
+            <a href="tel:+639163983245" class="cta-button">📧 Ramalkim190@gmail.com</a>
+        </div>
+    </div>
+</body>
+</html>
